@@ -17,7 +17,6 @@
         <relativePath/>
     </parent>
 
-    <!-- ✅ 改成 Java 17 -->
     <properties>
         <java.version>17</java.version>
         <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
@@ -41,6 +40,7 @@
             <version>8.0.33</version>
         </dependency>
 
+        <!-- ✅ JWT 依赖（只保留一个） -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
@@ -60,7 +60,6 @@
         </dependency>
     </dependencies>
 
-    <!-- ✅ 添加编译插件配置 -->
     <build>
         <plugins>
             <plugin>
@@ -75,7 +74,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <!-- ✅ 添加 Maven 编译插件 -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -84,7 +83,7 @@
                     <target>17</target>
                 </configuration>
             </plugin>
-            <!-- ✅ 跳过测试 -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
