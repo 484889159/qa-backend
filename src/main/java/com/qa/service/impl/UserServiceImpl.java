@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String username, String password) {
-        // MD5加密密码
         String encryptedPassword = DigestUtils.md5DigestAsHex(
                 password.getBytes(StandardCharsets.UTF_8)
         );
@@ -85,14 +84,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean register(User user) {
-        // 检查用户名是否已存在
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(User::getUsername, user.getUsername());
         if (userMapper.selectCount(wrapper) > 0) {
             return false;
         }
 
-        // 密码加密
         String encryptedPassword = DigestUtils.md5DigestAsHex(
                 user.getPassword().getBytes(StandardCharsets.UTF_8)
         );
